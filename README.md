@@ -70,7 +70,7 @@ The service will start and listen on `http://localhost:3555`.
 
 ```json
 {
-    "pairing_code": 1234
+    "pairing_code": "1234"
 }
 ```
 
@@ -154,7 +154,7 @@ If the server is not found, the response will indicate:
 
 ```json
 {
-    "pairing_code": 1234
+    "pairing_code": "1234"
 }
 ```
 

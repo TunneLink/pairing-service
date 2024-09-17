@@ -26,7 +26,7 @@ def register_server():
         server_ssh_tunnel: int = data["ssh_tunnel"]
         server_listen_pubkey_tunnel: int = data["listen_pubkey_tunnel"]
 
-        server_pairing_code = random.randint(1000, 9999) # Generate 4 digit number
+        server_pairing_code = str(random.randint(1000, 9999)) # Generate 4 digit number
         db.add_server(pubkey=server_pubkey,
                       username=server_username,
                       ssh_tunnel=server_ssh_tunnel,
@@ -49,7 +49,7 @@ def get_server_details():
     """
     try:
         data = request.json
-        pairing_code: int = data["pairing_code"]
+        pairing_code: str = data["pairing_code"]
 
         server_details = db.get_server_by_pairing_code(pairing_code)
 

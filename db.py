@@ -13,7 +13,7 @@ class Database:
         """
         self.servers: Dict[str, dict] = {}
 
-    def add_server(self, pubkey: str, username: str, ssh_tunnel: int, listen_pubkey_tunnel: int, pairing_code: int) -> None:
+    def add_server(self, pubkey: str, username: str, ssh_tunnel: int, listen_pubkey_tunnel: int, pairing_code: str) -> None:
         """
         Adds a new server to the database.
 
@@ -22,7 +22,7 @@ class Database:
             username (str): SSH username.
             ssh_tunnel (int): Tunnel port for SSH.
             listen_pubkey_tunnel (int): Tunnel port for receiving public keys.
-            pairing_code (int): Generated pairing code for the server.
+            pairing_code (str): Generated pairing code for the server.
         """
         self.servers[pubkey] = {
             "ssh_user": username,
@@ -34,12 +34,12 @@ class Database:
         }
         logging.info(f"Server added: {pubkey}")
 
-    def get_server_by_pairing_code(self, pairing_code: int) -> Optional[Dict[str, Optional[str]]]:
+    def get_server_by_pairing_code(self, pairing_code: str) -> Optional[Dict[str, Optional[str]]]:
         """
         Retrieves the server details by pairing code.
 
         Args:
-            pairing_code (int): The pairing code to look up.
+            pairing_code (str): The pairing code to look up.
 
         Returns:
             dict: Server details (pubkey, username, ssh_tunnel, listen_pubkey_tunnel) or an error if the pairing code is not found.
