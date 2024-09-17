@@ -74,7 +74,33 @@ The service will start and listen on `http://localhost:3555`.
 }
 ```
 
-### 2. Server Status (Heartbeat & Status Retrieval)
+### 2. Retrieve Server Details by Pairing Code
+
+**Endpoint:** `/get_server_details`
+**Method:** `GET`
+
+**Query Parameters:** `pairing_code`: The 4-digit pairing code.
+
+**Description:** Retrieves server details (SSH public key, SSH user, etc.) by using the provided pairing code.
+
+**Example Request:**
+
+```
+GET /get_server_details?pairing_code=1234
+```
+
+**Response:**
+
+```json
+{
+    "ssh_pubkey": "AAAAB3NzaC1yc2EAAAABIwAAAQEArlNeGm...",
+    "ssh_user": "server_user",
+    "ssh_tunnel": 3522,
+    "listen_pubkey_tunnel": 3533
+}
+```
+
+### 3. Server Status (Heartbeat & Status Retrieval)
 
 **Endpoint:** `/server_status`
 **Method:** `POST`
@@ -140,32 +166,6 @@ If the server is not found, the response will indicate:
 ```json
 {
     "error": "Server not registered"
-}
-```
-
-### 3. Retrieve Server Details by Pairing Code
-
-**Endpoint:** `/get_server_details`
-**Method:** `GET`
-
-**Query Parameters:** `pairing_code`: The 4-digit pairing code.
-
-**Description:** Retrieves server details (SSH public key, SSH user, etc.) by using the provided pairing code.
-
-**Example Request:**
-
-```
-GET /get_server_details?pairing_code=1234
-```
-
-**Response:**
-
-```json
-{
-    "ssh_pubkey": "AAAAB3NzaC1yc2EAAAABIwAAAQEArlNeGm...",
-    "ssh_user": "server_user",
-    "ssh_tunnel": 3522,
-    "listen_pubkey_tunnel": 3533
 }
 ```
 
