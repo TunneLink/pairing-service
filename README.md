@@ -146,16 +146,16 @@ If the server is not found, the response will indicate:
 ### 3. Retrieve Server Details by Pairing Code
 
 **Endpoint:** `/get_server_details`
-**Method:** `POST`
+**Method:** `GET`
+
+**Query Parameters:** `pairing_code`: The 4-digit pairing code.
 
 **Description:** Retrieves server details (SSH public key, SSH user, etc.) by using the provided pairing code.
 
-**Request Body:**
+**Example Request:**
 
-```json
-{
-    "pairing_code": "1234"
-}
+```
+GET /get_server_details?pairing_code=1234
 ```
 
 **Response:**

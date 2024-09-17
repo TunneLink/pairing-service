@@ -48,8 +48,9 @@ def get_server_details():
     Expects JSON with 'pairing_code'.
     """
     try:
-        data = request.json
-        pairing_code: str = data["pairing_code"]
+        pairing_code: str  = request.args.get("pairing_code")
+        if not pairing_code:
+            return jsonify({"error": "Pairing code is required."}), # HTTP 400 Bad Request
 
         server_details = db.get_server_by_pairing_code(pairing_code)
 
@@ -59,9 +60,6 @@ def get_server_details():
             return jsonify(server_details), 404  # HTTP 404 Not Found if pairing code is not found
         else:
             return jsonify(server_details), 200  # HTTP 200 OK for successful retrieval
-    except KeyError as e:
-        logging.error(f"Missing key in request: {e}")
-        return jsonify({"error": f"Missing key: {e}"}), 400  # HTTP 400 Bad Request
     except Exception as e:
         logging.error(f"Error retrieving server details: {e}")
         return jsonify({"error": "Internal server error"}), 500  # HTTP 500 Internal Server Error
