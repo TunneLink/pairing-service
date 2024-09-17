@@ -1,12 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import random
 import logging
 
 from db import Database
 
 app = Flask(__name__)
+CORS(app) # Enable CORS for all routes
 db = Database()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

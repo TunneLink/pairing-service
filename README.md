@@ -8,18 +8,20 @@ TunneLink Service provides a server registration and pairing service for TunneLi
 - **Heartbeat Mechanism:** Servers send heartbeats to indicate they are still online.
 - **Server Status:** Clients can query the server's online/offline status and retrieve its details.
 - **Pairing Code Retrieval:** Clients can request server details (SSH public key, SSH user, etc.) using a unique 4-digit pairing code.
+- **CORS Support:** The service includes CORS headers to allow cross-origin requests.
 
 ## Installation
 
 ### Prerequisites
 
 - Python 3.x
-- Flask (`pip install flask`)
+- Flask
+- Flask-CORS (for cross-origin support)
 
 ### Install Dependencies
 
 ```bash
-pip install flask
+pip install flask flask-cors
 ```
 
 ### Running the Application
